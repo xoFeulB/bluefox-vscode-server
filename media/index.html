@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>^.,.^ BlueFoxServer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <p>^.,.^</p>
+    <div id="notice" hidden>
+        <p>There seems to be no BlueFox in this browser.</p>
+        <div>
+            <a href="https://github.com/xoFeulB/BlueFox">Download ---> https://github.com/xoFeulB/BlueFox</a>
+        </div>
+        <div>
+            <a href="http://127.0.0.1:7777/">Or in other browser ---> http://127.0.0.1:7777/</a>
+        </div>
+    </div>
+</body>
+
+</html>
+<script type="module" defer>
+    (async () => {
+        let log = console.log;
+        let sleep = (msec) => new Promise((resolve) => setTimeout(resolve, msec));
+        await sleep(2000);
+        document.querySelector("#notice").removeAttribute("hidden");
+    })();
+</script>

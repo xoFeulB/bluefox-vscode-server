@@ -1,0 +1,184 @@
+{
+    "snippet-bfs-template": {
+        "prefix": "BlueFoxScript Template",
+        "body": [
+            "(async () => {",
+            "  let blueFoxScript = new BlueFoxScript();",
+            "  await blueFoxScript.init();",
+            "",
+            "  {",
+            "    // Your codes here",
+            "  }",
+            "",
+            "})();"
+        ],
+        "description": "BlueFoxScript テンプレート"
+    },
+    "snippet-bfs-await-sleep": {
+        "prefix": "await sleep()",
+        "body": [
+            "await sleep(${1:msec})"
+        ],
+        "description": []
+    },
+    "snippet-bfs-get": {
+        "prefix": ".get(:URL-RegExp)",
+        "body": [
+            ".get(`${1:URL-RegExp}`)"
+        ],
+        "description": [
+            "(Array)"
+        ]
+    },
+    "snippet-bfs-create": {
+        "prefix": ".create(:URL)",
+        "body": [
+            ".create(`${1:URL}`)"
+        ],
+        "description": [
+            "async ... (TabInfo)"
+        ]
+    },
+    "snippet-bfs-dispatch": {
+        "prefix": ".dispatch",
+        "body": [
+            ".dispatch"
+        ],
+        "description": []
+    },
+    "snippet-bfs-script": {
+        "prefix": ".script(:callable)",
+        "body": [
+            ".script(() => {return JSON.stringify({})})"
+        ],
+        "description": []
+    },
+    "snippet-bfs-action": {
+        "prefix": ".action(:object)",
+        "body": [
+            ".action({${1:object}})"
+        ],
+        "description": []
+    },
+    "snippet-bfs-screenshot": {
+        "prefix": ".screenshot(:config)",
+        "body": [
+            ".screenshot(config={ format: `${1:jpeg|png|webp}`, captureBeyondViewport: ${2:true|false} }"
+        ],
+        "description": []
+    },
+    "snippet-bfs-tails": {
+        "prefix": ".tails(:config)",
+        "body": [
+            ".tails({${1:config}})"
+        ],
+        "description": []
+    },
+    "snippet-bfs-init": {
+        "prefix": ".init(:config)",
+        "body": [
+            ".init({${1:config}})"
+        ],
+        "description": []
+    },
+    "snippet-bfs-target": {
+        "prefix": ".target(:CSS-Selector)",
+        "body": [
+            ".target(`${1:CSS-Selector}`)"
+        ],
+        "description": []
+    },
+    "snippet-bfs-set": {
+        "prefix": ".set(:config)",
+        "body": [
+            ".set({ property: { ${1:path}: `${2:value}` }, attribute: { ${3:key}: `${4:value}` } })"
+        ],
+        "description": []
+    },
+    "snippet-bfs-setProperty": {
+        "prefix": ".setProperty(:config)",
+        "body": [
+            ".setProperty({ ${1:path}: `${2:value}` })"
+        ],
+        "description": []
+    },
+    "snippet-bfs-setAttribute": {
+        "prefix": ".setAttribute(:config)",
+        "body": [
+            ".setAttribute({ ${1:key}: `${2:value}` })"
+        ],
+        "description": []
+    },
+    "snippet-bfs-call": {
+        "prefix": ".call(:property, :argv)",
+        "body": [
+            ".call(`${1:property}`, {${2:argv}})"
+        ],
+        "description": []
+    },
+    "snippet-bfs-event": {
+        "prefix": ".event(:config)",
+        "body": [
+            ".event({ eventObject: `${1:path}`, eventType: `${2:event-type}`, eventArgs: `${3:any}` })"
+        ],
+        "description": []
+    },
+    "snippet-bfs-focus": {
+        "prefix": ".focus(:property, :reset = false)",
+        "body": [
+            ".focus(`${1:property}`, reset=${2:true|false})"
+        ],
+        "description": []
+    },
+    "snippet-bfs-capture": {
+        "prefix": ".capture(:CSS-Selector = .target(), :config)",
+        "body": [
+            ".capture(selector=`${1:CSS-Selector}`, object={ fileName: `${2:fileName}`, format: `${3:jpeg|png|webp}`, quality: ${4:0~100} })"
+        ],
+        "description": []
+    },
+    "snippet-bfs-key": {
+        "prefix": ".key(:config)",
+        "body": [
+            ".key({${1:config}})"
+        ],
+        "description": [
+            "https://chromedevtools.github.io/devtools-protocol/1-3/Input/#method-dispatchKeyEvent"
+        ]
+    },
+    "snippet-bfs-open": {
+        "prefix": ".open(:URL)",
+        "body": [
+            ".open(`${1:URL}`)"
+        ],
+        "description": []
+    },
+    "snippet-bfs-sleep": {
+        "prefix": ".sleep(:msec)",
+        "body": [
+            ".sleep(${1:msec})"
+        ],
+        "description": []
+    },
+    "snippet-bfs-file": {
+        "prefix": ".file(:object)",
+        "body": [
+            ".file([{ name: `${1:fileName}`, type: `${2:MIME-type}`, blob: [${3:blob}] }])"
+        ],
+        "description": []
+    },
+    "snippet-bfs-pushProperties": {
+        "prefix": ".pushProperties(:CSS-Selector = .target())",
+        "body": [
+            ".pushProperties()"
+        ],
+        "description": []
+    },
+    "snippet-bfs-run": {
+        "prefix": ".run(:config)",
+        "body": [
+            ".run({${1:config}})"
+        ],
+        "description": []
+    }
+}

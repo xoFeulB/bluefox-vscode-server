@@ -1,0 +1,93 @@
+{
+  "name": "BlueFoxServer",
+  "displayName": "BlueFoxServer",
+  "description": "^.,.^ VSCode Extension for BlueFox",
+  "version": "0.0.1",
+  "publisher": "BlueFoxEnterprise",
+  "icon": "media/icon.png",
+  "homepage": "https://github.com/xoFeulB",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xoFeulB/bluefox-vscode-server.git"
+  },
+  "author": {
+    "name": "BlueFoxEnterprise",
+    "email": "info@bluefox.tech",
+    "url": "https://bsky.app/profile/xofeulb.bluefox.tech"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [],
+  "preview": false,
+  "galleryBanner": {
+    "color": "#83a7ec",
+    "theme": "light"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "BlueFoxServer.OnLine",
+        "title": "BlueFoxServer.OnLine"
+      },
+      {
+        "command": "BlueFoxServer.OffLine",
+        "title": "BlueFoxServer.OffLine"
+      },
+      {
+        "command": "BlueFoxServer.RunScript",
+        "title": "BlueFoxServer.RunScript"
+      },
+      {
+        "command": "BlueFoxServer.OpenBrowser",
+        "title": "BlueFoxServer.OpenBrowser"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/javascript.json"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "BlueFoxServer.RunScript",
+          "group": "myGrp@BlueFoxServer",
+          "when": "resourceLangId == javascript"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "BlueFoxServer.RunScript",
+          "group": "myGrp@BlueFoxServer",
+          "when": "resourceLangId == javascript"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "build": "npx vsce package",
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.75.0",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "glob": "^10.3.10",
+    "opn": "^6.0.0",
+    "ws": "^8.16.0"
+  }
+}
