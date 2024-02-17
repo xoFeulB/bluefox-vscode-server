@@ -25,13 +25,6 @@ class State {
 			}
 		);
 		this.offLine();
-		// if (this.context.globalState.get("server.online")) {
-		// 	this.statusBarItem.text = "^.,.^ BlueFox is OnLine in other window.";
-		// 	this.statusBarItem.command = null;
-
-		// } else {
-		// 	this.offLine();
-		// }
 		this.statusBarItem.show();
 	}
 
