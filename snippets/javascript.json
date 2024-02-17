@@ -95,6 +95,13 @@
         ],
         "description": []
     },
+    "snippet-bfs-runRemoteScript": {
+        "prefix": ".runRemoteScript(:Path)",
+        "body": [
+            ".runRemoteScript(`${1:Path}`)"
+        ],
+        "description": []
+    },
     "snippet-bfs-set": {
         "prefix": ".set(:config)",
         "body": [
