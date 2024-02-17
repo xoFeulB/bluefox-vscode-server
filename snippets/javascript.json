@@ -88,6 +88,13 @@
         ],
         "description": []
     },
+    "snippet-bfs-defined": {
+        "prefix": ".defined(:Name)",
+        "body": [
+            ".defined(`${1:Name}`)"
+        ],
+        "description": []
+    },
     "snippet-bfs-set": {
         "prefix": ".set(:config)",
         "body": [
