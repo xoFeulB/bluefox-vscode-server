@@ -95,6 +95,10 @@ class Gate {
 			}
 		};
 		this.httpServer = http.createServer((request, response) => {
+			if (request.headers.host != "localhost.bluefox.ooo:7777") {
+				response.writeHead(500, { "Content-Type": "text/html" });
+				response.end("", "utf-8");
+			}
 			if (url.parse(request.url).pathname in this.API) {
 				this.API[url.parse(request.url).pathname](decodeURI(url.parse(request.url).query), response);
 
@@ -188,7 +192,7 @@ class Server {
 	}
 
 	start() {
-		this.webSocketClient = new ws("http://127.0.0.1:8887");
+		this.webSocketClient = new ws("http://localhost.bluefox.ooo:8887");
 		this.webSocketClient.addEventListener("open", (event) => {
 
 		});
@@ -276,11 +280,11 @@ function activate(context) {
 			},
 			"BlueFoxServer.OpenBrowser": () => {
 				if (server.OnLine) {
-					opn("http://127.0.0.1:7777");
+					opn("http://localhost.bluefox.ooo:7777");
 				} else {
 					server.start();
 					state.onLine();
-					opn("http://127.0.0.1:7777");
+					opn("http://localhost.bluefox.ooo:7777");
 				}
 			},
 		}
