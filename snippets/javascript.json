@@ -95,10 +95,17 @@
         ],
         "description": []
     },
-    "snippet-bfs-runRemoteScript": {
-        "prefix": ".runRemoteScript(:Path)",
+    "snippet-bfs-saveTail": {
+        "prefix": ".saveTail(:title, :description, :config)",
         "body": [
-            ".runRemoteScript(`${1:Path}`)"
+            ".saveTail(`${1:title}`, [`${2:description}`], {})"
+        ],
+        "description": []
+    },
+    "snippet-bfs-runRemoteScript": {
+        "prefix": ".runRemoteScript(:path)",
+        "body": [
+            ".runRemoteScript(`${1:path}`)"
         ],
         "description": []
     },
