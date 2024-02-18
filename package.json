@@ -15,6 +15,8 @@
     "email": "info@bluefox.tech",
     "url": "https://bsky.app/profile/xofeulb.bluefox.tech"
   },
+  "pricing": "Free",
+  "license": "https://github.com/xoFeulB/bluefox-vscode-server/blob/main/LICENSE.md",
   "engines": {
     "vscode": "^1.75.0"
   },
