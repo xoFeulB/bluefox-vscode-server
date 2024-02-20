@@ -102,6 +102,13 @@
         ],
         "description": []
     },
+    "snippet-bfs-saveJSON": {
+        "prefix": ".saveJSON(:file_name, :object)",
+        "body": [
+            ".saveJSON(`${1:file_name}`, {})"
+        ],
+        "description": []
+    },
     "snippet-bfs-runRemoteScript": {
         "prefix": ".runRemoteScript(:path)",
         "body": [

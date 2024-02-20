@@ -238,7 +238,6 @@ class Server {
 	constructor(context) {
 		this.context = context;
 		this.webSocketClient;
-		this.id = null;
 		this.OnLine = false;
 
 		this.API = {
