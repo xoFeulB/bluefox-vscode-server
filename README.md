@@ -1,5 +1,5 @@
 # bluefox-vscode-server
 
-```bash
-> code --install-extension BlueFoxServer-0.1.0.vsix
-```
+vscode extension for <a href="https://github.com/xoFeulB/BlueFox">BlueFox</a>
+
+<img src="https://raw.githubusercontent.com/xoFeulB/bluefox-vscode-server/main/media/icon.png">
