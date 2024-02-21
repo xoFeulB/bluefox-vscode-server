@@ -2,7 +2,7 @@
   "name": "BlueFoxServer",
   "displayName": "BlueFoxServer",
   "description": "^.,.^ VSCode Extension for BlueFox",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "BlueFoxEnterprise",
   "icon": "media/icon.png",
   "homepage": "https://github.com/xoFeulB",
@@ -23,7 +23,7 @@
   "categories": [],
   "preview": false,
   "galleryBanner": {
-    "color": "#83a7ec",
+    "color": "#ffffff",
     "theme": "light"
   },
   "activationEvents": [
