@@ -127,11 +127,11 @@ class Gate {
               path: path
             },
           )).filePath;
-          let R = fs.readFileSync(filepath, "utf-8");
+          let R = fs.readFileSync(filepath);
 
           let header = { "Content-Type": (extension in mime) ? mime[extension] : "application/octet-stream" };
           response.writeHead(200, header);
-          response.end(R, "utf-8");
+          response.end(R, "binary");
         },
         "/": async (query, response) => {
           GET_API["/index.html"](query, response);
