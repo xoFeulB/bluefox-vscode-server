@@ -19,67 +19,18 @@
         "body": [
             "await sleep(${1:msec})"
         ],
-        "description": []
-    },
-    "snippet-bfs-get": {
-        "prefix": ".get(:URL-RegExp)",
-        "body": [
-            ".get(`${1:URL-RegExp}`)"
-        ],
         "description": [
-            "(Array)"
+            "async"
         ]
-    },
-    "snippet-bfs-create": {
-        "prefix": ".create(:URL)",
-        "body": [
-            ".create(`${1:URL}`)"
-        ],
-        "description": [
-            "async ... (TabInfo)"
-        ]
-    },
-    "snippet-bfs-dispatch": {
-        "prefix": ".dispatch",
-        "body": [
-            ".dispatch"
-        ],
-        "description": []
-    },
-    "snippet-bfs-script": {
-        "prefix": ".script(:callable)",
-        "body": [
-            ".script(() => {return JSON.stringify({})})"
-        ],
-        "description": []
-    },
-    "snippet-bfs-action": {
-        "prefix": ".action(:object)",
-        "body": [
-            ".action({${1:object}})"
-        ],
-        "description": []
-    },
-    "snippet-bfs-screenshot": {
-        "prefix": ".screenshot(:config)",
-        "body": [
-            ".screenshot(config={ format: `${1:jpeg|png|webp}`, captureBeyondViewport: ${2:true|false} }"
-        ],
-        "description": []
-    },
-    "snippet-bfs-tails": {
-        "prefix": ".tails(:config)",
-        "body": [
-            ".tails({${1:config}})"
-        ],
-        "description": []
     },
     "snippet-bfs-init": {
         "prefix": ".init(:config)",
         "body": [
             ".init({${1:config}})"
         ],
-        "description": []
+        "description": [
+            "async"
+        ]
     },
     "snippet-bfs-target": {
         "prefix": ".target(:CSS-Selector)",
@@ -92,27 +43,6 @@
         "prefix": ".defined(:Name)",
         "body": [
             ".defined(`${1:Name}`)"
-        ],
-        "description": []
-    },
-    "snippet-bfs-saveTail": {
-        "prefix": ".saveTail(:title, :description, :config)",
-        "body": [
-            ".saveTail(`${1:title}`, [`${2:description}`], {})"
-        ],
-        "description": []
-    },
-    "snippet-bfs-saveJSON": {
-        "prefix": ".saveJSON(:file_name, :object)",
-        "body": [
-            ".saveJSON(`${1:file_name}`, {})"
-        ],
-        "description": []
-    },
-    "snippet-bfs-runRemoteScript": {
-        "prefix": ".runRemoteScript(:path)",
-        "body": [
-            ".runRemoteScript(`${1:path}`)"
         ],
         "description": []
     },
@@ -134,6 +64,13 @@
         "prefix": ".setAttribute(:config)",
         "body": [
             ".setAttribute({ ${1:key}: `${2:value}` })"
+        ],
+        "description": []
+    },
+    "snippet-bfs-push": {
+        "prefix": ".push(:config)",
+        "body": [
+            ".push({ property: { ${1:path}: `${2:value}` }, attribute: { ${3:key}: `${4:value}` } }"
         ],
         "description": []
     },
@@ -195,18 +132,113 @@
         ],
         "description": []
     },
-    "snippet-bfs-pushProperties": {
-        "prefix": ".pushProperties(:CSS-Selector = .target())",
+    "snippet-bfs-dispatch": {
+        "prefix": ".dispatch",
         "body": [
-            ".pushProperties()"
+            ".dispatch"
         ],
         "description": []
+    },
+    "snippet-bfs-script": {
+        "prefix": ".script(:callable)",
+        "body": [
+            ".script(() => {return JSON.stringify({})})"
+        ],
+        "description": [
+            "async"
+        ]
+    },
+    "snippet-bfs-action": {
+        "prefix": ".action(:object)",
+        "body": [
+            ".action({${1:object}})"
+        ],
+        "description": [
+            "async"
+        ]
+    },
+    "snippet-bfs-screenshot": {
+        "prefix": ".screenshot(:config)",
+        "body": [
+            ".screenshot(config={ format: `${1:jpeg|png|webp}`, captureBeyondViewport: ${2:true|false} }"
+        ],
+        "description": [
+            "async"
+        ]
+    },
+    "snippet-bfs-tails": {
+        "prefix": ".tails(:config)",
+        "body": [
+            ".tails({${1:config}})"
+        ],
+        "description": []
+    },
+    "snippet-bfs-getProperties": {
+        "prefix": ".getProperties(:CSS-Selector = .target())",
+        "body": [
+            ".getProperties()"
+        ],
+        "description": [
+            "async"
+        ]
     },
     "snippet-bfs-run": {
         "prefix": ".run(:config)",
         "body": [
             ".run({${1:config}})"
         ],
+        "description": [
+            "async"
+        ]
+    },
+    "snippet-bfs-saveTail": {
+        "prefix": ".saveTail(:title, :description, :config)",
+        "body": [
+            ".saveTail(`${1:title}`, [`${2:description}`], {})"
+        ],
         "description": []
+    },
+    "snippet-bfs-saveJSON": {
+        "prefix": ".saveJSON(:file_name, :object)",
+        "body": [
+            ".saveJSON(`${1:file_name}`, {})"
+        ],
+        "description": []
+    },
+    "snippet-bfs-get": {
+        "prefix": ".get(:URL-RegExp)",
+        "body": [
+            ".get(`${1:URL-RegExp}`)"
+        ],
+        "description": [
+            "(Array)"
+        ]
+    },
+    "snippet-bfs-create": {
+        "prefix": ".create(:URL)",
+        "body": [
+            ".create(`${1:URL}`)"
+        ],
+        "description": [
+            "async"
+        ]
+    },
+    "snippet-bfs-runRemoteScript": {
+        "prefix": ".runRemoteScript(:path)",
+        "body": [
+            ".runRemoteScript(`${1:path}`)"
+        ],
+        "description": [
+            "async"
+        ]
+    },
+    "snippet-bfs-getRemoteFile": {
+        "prefix": ".getRemoteFile(:path)",
+        "body": [
+            ".getRemoteFile(`${1:path}`)"
+        ],
+        "description": [
+            "async"
+        ]
     }
 }
