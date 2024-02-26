@@ -177,6 +177,13 @@ class Gate {
       this.webSocketServer = new ws.Server({ port: 8888 });
     }
 		/* WebSocketGate VSCode workspace connection */ {
+      let push_function = {
+        "RunScript": (data) => {
+          [...this.webSocketServer.clients][0].send(
+            JSON.stringify(data)
+          );
+        }
+      }
       this.webSocketGate = new ws.Server({ port: 8887 });
       this.webSocketGate.on("connection", async (webSocket) => {
         webSocket.id = crypto.randomUUID();
@@ -204,11 +211,15 @@ class Gate {
             )
           );
         });
+
+
         webSocket.on("message", async (message) => {
           let data = JSON.parse(message);
           if (data.id in this.workspaceClients[webSocket.id].messagePool) {
             await this.workspaceClients[webSocket.id].messagePool[data.id](data);
             delete this.workspaceClients[webSocket.id].messagePool[data.id];
+          } else {
+            push_function[data.type](data);
           }
         });
         webSocket.on("close", () => {
@@ -287,6 +298,14 @@ class Server {
     this.webSocketClient.close();
     this.OnLine = false;
   }
+  runScript(buf) {
+    this.webSocketClient.send(
+      JSON.stringify({
+        type: "RunScript",
+        content: buf
+      })
+    );
+  }
 }
 
 let state;
@@ -319,33 +338,8 @@ function activate(context) {
         }
       },
       "BlueFoxServer.RunScript": (_) => {
-        if (server.OnLine) {
-          fs.readFile(_.path.slice(1), "utf-8",
-            (error, content) => {
-              [...gate.webSocketServer.clients][0].send(
-                JSON.stringify(
-                  {
-                    type: "RunScript",
-                    content: content,
-                  }
-                )
-              );
-            });
-        } else {
-          server.start();
-          state.onLine();
-          fs.readFile(_.path.slice(1), "utf-8",
-            (error, content) => {
-              [...gate.webSocketServer.clients][0].send(
-                JSON.stringify(
-                  {
-                    type: "RunScript",
-                    content: content,
-                  }
-                )
-              );
-            });
-        }
+        let R = fs.readFileSync(_.path.slice(1), "utf-8");
+        server.runScript(R);
       },
       "BlueFoxServer.OpenBrowser": () => {
         if (server.OnLine) {
