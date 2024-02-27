@@ -240,5 +240,14 @@
         "description": [
             "async"
         ]
+    },
+    "snippet-bfs-runScript": {
+        "prefix": ".runScript(:script)",
+        "body": [
+            ".runScript(`${1:script}`)"
+        ],
+        "description": [
+            "async"
+        ]
     }
 }
