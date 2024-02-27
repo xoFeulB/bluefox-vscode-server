@@ -71,6 +71,7 @@ class Gate {
     this.webSocketServer;
     this.webSocketGate;
     this.workspaceClients = {};
+    this.OnLine = false;
   }
 
   start() {
@@ -236,12 +237,14 @@ class Gate {
         });
       });
     }
+    this.OnLine = true;
   }
 
   stop() {
     this.httpServer.close();
     this.webSocketServer.close();
     this.webSocketGate.close();
+    this.OnLine = false;
   }
 }
 
@@ -326,6 +329,9 @@ function activate(context) {
   Object.entries(
     {
       "BlueFoxServer.OnLine": () => {
+        if (!gate.OnLine) {
+          gate.start();
+        }
         if (!server.OnLine) {
           server.start();
           state.onLine();
@@ -342,6 +348,9 @@ function activate(context) {
         server.runScript(R);
       },
       "BlueFoxServer.OpenBrowser": () => {
+        if (!gate.OnLine) {
+          gate.start();
+        }
         if (server.OnLine) {
           opn("http://localhost.bluefox.ooo:7777");
         } else {
