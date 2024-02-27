@@ -223,19 +223,19 @@
             "async"
         ]
     },
-    "snippet-bfs-runRemoteScript": {
-        "prefix": ".runRemoteScript(:path)",
+    "snippet-bfs-runWorkspaceScript": {
+        "prefix": ".runWorkspaceScript(:path)",
         "body": [
-            ".runRemoteScript(`${1:path}`)"
+            ".runWorkspaceScript(`${1:path}`)"
         ],
         "description": [
             "async"
         ]
     },
-    "snippet-bfs-getRemoteFile": {
-        "prefix": ".getRemoteFile(:path)",
+    "snippet-bfs-getWorkspaceFile": {
+        "prefix": ".getWorkspaceFile(:path)",
         "body": [
-            ".getRemoteFile(`${1:path}`)"
+            ".getWorkspaceFile(`${1:path}`)"
         ],
         "description": [
             "async"
