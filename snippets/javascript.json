@@ -249,5 +249,23 @@
         "description": [
             "async"
         ]
+    },
+    "snippet-bfs-close": {
+        "prefix": ".close()",
+        "body": [
+            ".close()"
+        ],
+        "description": [
+            "async"
+        ]
+    },
+    "snippet-bfs-reload": {
+        "prefix": ".reload()",
+        "body": [
+            ".reload()"
+        ],
+        "description": [
+            "async"
+        ]
     }
 }

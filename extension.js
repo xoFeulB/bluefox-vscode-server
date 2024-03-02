@@ -149,6 +149,7 @@ class Gate {
         }
       };
       let POST_API = {};
+
       let method = {
         "GET": (request, response) => {
           GET_API[url.parse(request.url).pathname](decodeURI(url.parse(request.url).query), response);
@@ -162,12 +163,27 @@ class Gate {
           })
         },
       };
+      let method_fileserver = {
+        "GET": (request, response) => {
+          if (request.url == "/") {
+            request.url = "/index.html";
+          }
+          let extension = request.url.split(".").slice(-1);
+          let R = fs.readFileSync(`${vscode.workspace.workspaceFolders[0].uri.path.slice(1)}${request.url}`, "utf-8");
+          let header = { "Content-Type": (extension in mime) ? mime[extension] : "application/octet-stream" };
+          response.writeHead(200, header);
+          response.end(R, "binary");
+        }
+      }
       this.httpServer = http.createServer((request, response) => {
         try {
-          if (request.headers.host != "localhost.bluefox.ooo:7777") {
+          if (request.headers.host == "localhost.bluefox.ooo:7777") {
+            method[request.method](request, response);
+          } else if (request.headers.host == "127.0.0.1:7777") {
+            method_fileserver[request.method](request, response);
+          } else {
             throw new Error("");
           }
-          method[request.method](request, response);
         } catch (e) {
           response.writeHead(404, { "Content-Type": "text/html" });
           response.end("^.,.^ < 404!", "utf-8");
