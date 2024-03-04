@@ -33,9 +33,9 @@
         ]
     },
     "snippet-bfs-target": {
-        "prefix": ".target(:CSS-Selector)",
+        "prefix": ".target(:CSS-Selector or XPath)",
         "body": [
-            ".target(`${1:CSS-Selector}`)"
+            ".target(`${1:CSS-Selector or XPath}`)"
         ],
         "description": []
     },
@@ -96,9 +96,9 @@
         "description": []
     },
     "snippet-bfs-capture": {
-        "prefix": ".capture(:CSS-Selector = .target(), :config)",
+        "prefix": ".capture(:CSS-Selector or XPath = .target(), :config)",
         "body": [
-            ".capture(selector=`${1:CSS-Selector}`, object={ fileName: `${2:fileName}`, format: `${3:jpeg|png|webp}`, quality: ${4:0~100} })"
+            ".capture(selector=`${1:CSS-Selector or XPath}`, object={ fileName: `${2:fileName}`, format: `${3:jpeg|png|webp}`, quality: ${4:0~100} })"
         ],
         "description": []
     },
@@ -174,7 +174,7 @@
         "description": []
     },
     "snippet-bfs-getProperties": {
-        "prefix": ".getProperties(:CSS-Selector = .target())",
+        "prefix": ".getProperties(:CSS-Selector or XPath = .target())",
         "body": [
             ".getProperties()"
         ],
