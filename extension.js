@@ -104,7 +104,7 @@ class Gate {
                 }
               )
             )).filePath;
-            let R = fs.readFileSync(filepath, "utf-8");
+            let R = fs.readFileSync(filepath.replaceAll("../", ""), "utf-8");
             response.writeHead(200, { "Content-Type": "application/javascript" });
             response.end(R, "utf-8");
           } catch (e) {
@@ -128,7 +128,7 @@ class Gate {
               path: path
             },
           )).filePath;
-          let R = fs.readFileSync(filepath);
+          let R = fs.readFileSync(filepath.replaceAll("../", ""));
 
           let header = { "Content-Type": (extension in mime) ? mime[extension] : "application/octet-stream" };
           response.writeHead(200, header);
@@ -169,7 +169,7 @@ class Gate {
             request.url = "/index.html";
           }
           let extension = request.url.split(".").slice(-1);
-          let R = fs.readFileSync(`${vscode.workspace.workspaceFolders[0].uri.path.slice(1)}${request.url}`, "utf-8");
+          let R = fs.readFileSync(`${vscode.workspace.workspaceFolders[0].uri.path.slice(1)}${request.url}`.replaceAll("../", ""), "utf-8");
           let header = { "Content-Type": (extension in mime) ? mime[extension] : "application/octet-stream" };
           response.writeHead(200, header);
           response.end(R, "binary");
@@ -299,7 +299,7 @@ class Server {
   }
 
   start() {
-    this.webSocketClient = new ws("http://localhost.bluefox.ooo:8887");
+    this.webSocketClient = new ws("ws://localhost.bluefox.ooo:8887");
     this.webSocketClient.addEventListener("open", (event) => { });
     this.webSocketClient.addEventListener("message", (event) => {
       let data = JSON.parse(event.data);
@@ -345,22 +345,17 @@ function activate(context) {
   Object.entries(
     {
       "BlueFoxServer.OnLine": () => {
-        if (!gate.OnLine) {
-          gate.start();
-        }
-        if (!server.OnLine) {
-          server.start();
-          state.onLine();
-        }
+        gate.start();
+        server.start();
+        state.onLine();
       },
       "BlueFoxServer.OffLine": () => {
-        if (server.OnLine) {
-          server.stop();
-          state.offLine();
-        }
+        gate.stop();
+        server.stop();
+        state.offLine();
       },
       "BlueFoxServer.RunScript": (_) => {
-        let R = fs.readFileSync(_.path.slice(1), "utf-8");
+        let R = fs.readFileSync(_.path.slice(1).replaceAll("../", ""), "utf-8");
         server.runScript(R);
       },
       "BlueFoxServer.OpenBrowser": () => {

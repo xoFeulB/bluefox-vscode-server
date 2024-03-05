@@ -166,6 +166,15 @@
             "async"
         ]
     },
+    "snippet-bfs-tillScriptTrue": {
+        "prefix": ".tillScriptTrue(:callable, max_polling=:max_polling)",
+        "body": [
+            ".tillScriptTrue(() => {${1:callable}}, max_polling = ${2:20} }"
+        ],
+        "description": [
+            "async"
+        ]
+    },
     "snippet-bfs-tails": {
         "prefix": ".tails(:config)",
         "body": [
@@ -186,6 +195,15 @@
         "prefix": ".run(:config)",
         "body": [
             ".run({${1:config}})"
+        ],
+        "description": [
+            "async"
+        ]
+    },
+    "snippet-bfs-runTillNextOnLoad": {
+        "prefix": ".runTillNextOnLoad(:config, max_polling=:max_polling)",
+        "body": [
+            ".runTillNextOnLoad({${1:config}}, max_polling = ${2:20} }"
         ],
         "description": [
             "async"
