@@ -299,7 +299,7 @@ class Server {
   }
 
   start() {
-    this.webSocketClient = new ws("ws://localhost.bluefox.ooo:8887");
+    this.webSocketClient = new ws("http://localhost.bluefox.ooo:8887");
     this.webSocketClient.addEventListener("open", (event) => { });
     this.webSocketClient.addEventListener("message", (event) => {
       let data = JSON.parse(event.data);
@@ -336,7 +336,6 @@ let gate;
  */
 function activate(context) {
   gate = new Gate(context);
-  gate.start();
   server = new Server(context);
   state = new State(context);
   state.init();
@@ -345,14 +344,14 @@ function activate(context) {
   Object.entries(
     {
       "BlueFoxServer.OnLine": () => {
-        gate.start();
-        server.start();
-        state.onLine();
+        try { gate.start(); } catch (e) { }
+        try { server.start(); } catch (e) { }
+        try { state.onLine(); } catch (e) { }
       },
       "BlueFoxServer.OffLine": () => {
-        gate.stop();
-        server.stop();
-        state.offLine();
+        try { gate.stop(); } catch (e) { }
+        try { server.stop(); } catch (e) { }
+        try { state.offLine(); } catch (e) { }
       },
       "BlueFoxServer.RunScript": (_) => {
         let R = fs.readFileSync(_.path.slice(1).replaceAll("../", ""), "utf-8");
