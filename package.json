@@ -2,7 +2,7 @@
   "name": "BlueFoxServer",
   "displayName": "BlueFoxServer",
   "description": "^.,.^ VSCode Extension for BlueFox",
-  "version": "0.1.12",
+  "version": "0.1.14",
   "publisher": "BlueFoxEnterprise",
   "icon": "media/icon.png",
   "homepage": "https://github.com/xoFeulB",
@@ -43,16 +43,6 @@
       {
         "command": "BlueFoxServer.RunScript",
         "title": "BlueFoxServer.RunScript"
-      },
-      {
-        "command": "BlueFoxServer.OpenBrowser",
-        "title": "BlueFoxServer.OpenBrowser"
-      }
-    ],
-    "snippets": [
-      {
-        "language": "javascript",
-        "path": "./snippets/javascript.json"
       }
     ],
     "menus": {
@@ -88,7 +78,6 @@
   },
   "dependencies": {
     "glob": "^10.3.10",
-    "opn": "^6.0.0",
     "ws": "^8.16.0"
   }
 }

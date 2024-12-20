@@ -4,7 +4,6 @@ const ws = require("ws");
 const fs = require("fs");
 const url = require("url");
 const glob = require("glob");
-const opn = require("opn");
 const crypto = require("crypto");
 
 const log = console.log;
@@ -356,18 +355,6 @@ function activate(context) {
       "BlueFoxServer.RunScript": (_) => {
         let R = fs.readFileSync(_.path.slice(1).replaceAll("../", ""), "utf-8");
         server.runScript(R);
-      },
-      "BlueFoxServer.OpenBrowser": () => {
-        if (!gate.OnLine) {
-          gate.start();
-        }
-        if (server.OnLine) {
-          opn("http://localhost.bluefox.ooo:7777");
-        } else {
-          server.start();
-          state.onLine();
-          opn("http://localhost.bluefox.ooo:7777");
-        }
       },
     }
   ).forEach(([command, callback]) => {
