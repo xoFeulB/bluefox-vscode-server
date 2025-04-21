@@ -176,7 +176,7 @@ class Gate {
       }
       this.httpServer = http.createServer((request, response) => {
         try {
-          if (request.headers.host == "localhost.bluefox.ooo:7777") {
+          if (request.headers.host == "localhost:7777") {
             method[request.method](request, response);
           } else if (request.headers.host == "127.0.0.1:7777") {
             method_fileserver[request.method](request, response);
@@ -298,7 +298,7 @@ class Server {
   }
 
   start() {
-    this.webSocketClient = new ws("http://localhost.bluefox.ooo:8887");
+    this.webSocketClient = new ws("http://localhost:8887");
     this.webSocketClient.addEventListener("open", (event) => { });
     this.webSocketClient.addEventListener("message", (event) => {
       let data = JSON.parse(event.data);
