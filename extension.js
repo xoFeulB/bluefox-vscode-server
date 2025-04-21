@@ -176,7 +176,7 @@ class Gate {
       }
       this.httpServer = http.createServer((request, response) => {
         try {
-          if (request.headers.host == "localhost:7777") {
+          if (request.headers.host == "localhost.bluefox.ooo:7777") {
             method[request.method](request, response);
           } else if (request.headers.host == "127.0.0.1:7777") {
             method_fileserver[request.method](request, response);
@@ -276,6 +276,8 @@ class Server {
             name: workspaceFolder.name,
             objects: glob.sync(`${workspaceFolder.uri.path.slice(1)}/**/*`).map(
               (_) => {
+                console.log(_);
+                console.log(workspaceFolder.uri.path);
                 let r = {
                   path: _.replace(/\\/g, "/").slice(workspaceFolder.uri.path.slice(1).length),
                   isFile: fs.statSync(_).isFile(),
