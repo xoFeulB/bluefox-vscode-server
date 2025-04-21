@@ -242,9 +242,9 @@
         ]
     },
     "snippet-bfs-runWorkspaceScript": {
-        "prefix": ".runWorkspaceScript(:path)",
+        "prefix": ".runWorkspaceScript(:path, :args)",
         "body": [
-            ".runWorkspaceScript(`${1:path}`)"
+            ".runWorkspaceScript(`${1:path}`, [${2:args}])"
         ],
         "description": [
             "async"

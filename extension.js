@@ -5,6 +5,7 @@ const fs = require("fs");
 const url = require("url");
 const glob = require("glob");
 const crypto = require("crypto");
+const path = require("path");
 
 const log = console.log;
 const mime = {
@@ -276,10 +277,8 @@ class Server {
             name: workspaceFolder.name,
             objects: glob.sync(`${workspaceFolder.uri.path.slice(1)}/**/*`).map(
               (_) => {
-                console.log(_);
-                console.log(workspaceFolder.uri.path);
                 let r = {
-                  path: _.replace(/\\/g, "/").slice(workspaceFolder.uri.path.slice(1).length),
+                  path: _.replace(/\\/g, "/").slice(workspaceFolder.uri.fsPath.length),
                   isFile: fs.statSync(_).isFile(),
                 }
                 return r;
