@@ -113,26 +113,31 @@ class Gate {
           }
         },
         "/R": async (query, response) => {
-          query = query.split("/");
-          let uuid = query[1];
-          let workspace = query[2];
-          let file_name = query.slice(-1)[0];
-          let extension = file_name.split(".").slice(-1);
-          let path = `/${query.slice(3).join("/")}`;
+          try {
+            query = query.split("/");
+            let uuid = query[1];
+            let workspace = query[2];
+            let file_name = query.slice(-1)[0];
+            let extension = file_name.split(".").slice(-1);
+            let path = `/${query.slice(3).join("/")}`;
 
-          let filepath = (await this.workspaceClients[uuid].send(
-            {
-              type: "GetFilePath",
-              id: uuid,
-              workspace: workspace,
-              path: path
-            },
-          )).filePath;
-          let R = fs.readFileSync(filepath.replaceAll("../", ""));
+            let filepath = (await this.workspaceClients[uuid].send(
+              {
+                type: "GetFilePath",
+                id: uuid,
+                workspace: workspace,
+                path: path
+              },
+            )).filePath;
+            let R = fs.readFileSync(filepath.replaceAll("../", ""));
 
-          let header = { "Content-Type": (extension in mime) ? mime[extension] : "application/octet-stream" };
-          response.writeHead(200, header);
-          response.end(R, "binary");
+            let header = { "Content-Type": (extension in mime) ? mime[extension] : "application/octet-stream" };
+            response.writeHead(200, header);
+            response.end(R, "binary");
+          } catch {
+            response.writeHead(404, { "Content-Type": "text/plain" });
+            response.end("", "utf-8");
+          }
         },
         "/": async (query, response) => {
           GET_API["/index.html"](query, response);
