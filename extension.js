@@ -182,7 +182,7 @@ class Gate {
       }
       this.httpServer = http.createServer((request, response) => {
         try {
-          if (request.headers.host == "localhost.bluefox.ooo:7777") {
+          if (request.headers.host == "localhost.bluefox.tech:7777") {
             method[request.method](request, response);
           } else if (request.headers.host == "127.0.0.1:7777") {
             method_fileserver[request.method](request, response);
